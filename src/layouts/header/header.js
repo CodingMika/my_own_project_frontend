@@ -5,6 +5,7 @@ function Header(props) {
     <div>
       <Link to="/">Home</Link>
       <Link to="/sign-in">Sign In</Link>
+      <Link to="/sign-up">Sign Up</Link>
     </div>
   );
 }
