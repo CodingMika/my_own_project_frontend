@@ -6,8 +6,21 @@ function AccountPage(props) {
       <Link to="/sign-in">I already have an account.</Link>
       <Link to="/sign-up">I'm a new user.</Link>
       My account:
+      <form
+        method="postT"
+        action="/upload-avatar"
+        enctype="multipart/form-data"
+      >
+        <div>
+          <label>Your profile picture:</label>
+          <input type="file" name="avatar" />
+        </div>
+        <div>
+          <input type="submit" value="Upload" />
+        </div>
+      </form>
       <form>
-        <input type="image" />
+        <input type="file" />
         <div>
           <lable>Name: </lable>
           <input type="text" />
