@@ -5,7 +5,7 @@ function Footer(props) {
   return (
     <div className="footer">
       <Link to="/information">Information</Link>
-      <Link to="/social_media">Social Media</Link>
+      <Link to="/social-media">Social Media</Link>
       <Link to="/contacts">Contacts</Link>
     </div>
   );
