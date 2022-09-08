@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import "./account.css";
 
 function AccountPage(props) {
   return (
-    <div>
+    <div className="account">
       <Link to="/sign-in">I already have an account.</Link>
+      <br />
       <Link to="/sign-up">I'm a new user.</Link>
+      <br />
       My account:
       <form
         method="postT"
@@ -31,7 +34,7 @@ function AccountPage(props) {
         </div>
         <div>
           <lable>Phone Number: </lable>
-          <input type="phone_number" />
+          <input type="tel" />
         </div>
         <div>
           <lable>Email: </lable>

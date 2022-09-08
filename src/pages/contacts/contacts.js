@@ -1,7 +1,7 @@
 import "./contacts.css";
 
 function Contacts(props) {
-  return <div>CONTACTS ARE HERE.</div>;
+  return <div className="contacts">CONTACTS ARE HERE.</div>;
 }
 
 export default Contacts;

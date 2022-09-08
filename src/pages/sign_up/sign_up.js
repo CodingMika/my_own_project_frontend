@@ -1,6 +1,8 @@
+import "./sign_up.css";
+
 function SignUpPage(props) {
   return (
-    <div>
+    <div className="sign_up">
       Create your account:
       <form>
         <div>

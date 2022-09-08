@@ -1,0 +1,10 @@
+.navbar {
+  display: block;
+  width: 100px;
+  box-sizing: border-box;
+  background-color: #dda0dd;
+}
+
+Link {
+  text-decoration: none;
+}

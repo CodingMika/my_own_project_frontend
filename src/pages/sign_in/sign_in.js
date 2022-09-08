@@ -1,6 +1,9 @@
+import { Link } from "react-router-dom";
+import "./sign_in.css";
+
 function SignInPage(props) {
   return (
-    <div>
+    <div className="sign_in">
       Enter your account:
       <form>
         <div>
@@ -10,6 +13,7 @@ function SignInPage(props) {
         <div>
           <lable>Password: </lable>
           <input type="password" />
+          <Link to="/recover-password">I forgot my password.</Link>
         </div>
         <input type="submit" />
       </form>
