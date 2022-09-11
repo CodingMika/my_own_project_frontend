@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import "./sign_in.css";
+import "./log_in.css";
 
-function SignInPage(props) {
+function LogInPage(props) {
   return (
-    <div className="sign_in">
+    <div className="log_in">
       Enter your account:
       <form>
         <div>
@@ -21,4 +21,4 @@ function SignInPage(props) {
   );
 }
 
-export default SignInPage;
+export default LogInPage;

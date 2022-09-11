@@ -4,10 +4,6 @@ import "./account.css";
 function AccountPage(props) {
   return (
     <div className="account">
-      <Link to="/sign-in">I already have an account.</Link>
-      <br />
-      <Link to="/sign-up">I'm a new user.</Link>
-      <br />
       My account:
       <form
         method="postT"
@@ -15,7 +11,7 @@ function AccountPage(props) {
         enctype="multipart/form-data"
       >
         <div>
-          <label>Your profile picture:</label>
+          <label>Profile Picture:</label>
           <input type="file" name="avatar" />
         </div>
         <div>
@@ -23,7 +19,6 @@ function AccountPage(props) {
         </div>
       </form>
       <form>
-        <input type="file" />
         <div>
           <lable>Name: </lable>
           <input type="text" />
@@ -41,7 +36,7 @@ function AccountPage(props) {
           <input type="email" />
         </div>
         <div>
-          <lable>Password: </lable>
+          <lable>Password:</lable>
           <input type="password" />
         </div>
         <input type="submit" />
