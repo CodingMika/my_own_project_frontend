@@ -2,8 +2,7 @@ import "./social_media.css";
 
 function SocialMedia(props) {
   return (
-    <div className="social_media">
-      SOCIAL MEDIA
+    <div className="socialmedia">
       <br />
       <a href="https://www.facebook.com/">Facebook</a>
       <br />

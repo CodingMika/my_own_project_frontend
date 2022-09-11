@@ -2,7 +2,7 @@ import "./recover_password.css";
 
 function RecoverPassword(props) {
   return (
-    <div className="">
+    <div className="recover">
       Recover your password:
       <form>
         <div>

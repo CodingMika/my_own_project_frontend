@@ -1,3 +1,9 @@
 .account {
-  background-color: aquamarine;
+  background-color: #e7feff;
+  text-align: center;
+}
+
+.submit {
+  background-color: #afeeee;
+  color: black;
 }

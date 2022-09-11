@@ -1,3 +1,14 @@
 .log_in {
-  background-color: #3eb489;
+  background-color: #e7feff;
+  text-align: center;
+}
+
+.forgot {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.submit {
+  background-color: #afeeee;
+  color: black;
 }

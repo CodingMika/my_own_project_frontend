@@ -1,22 +1,34 @@
-import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import "./log_in.css";
 
 function LogInPage(props) {
   return (
     <div className="log_in">
-      Enter your account:
+      Log in:
       <form>
         <div>
+          <br />
           <lable>Email: </lable>
           <input type="email" />
         </div>
         <div>
+          <br />
           <lable>Password: </lable>
           <input type="password" />
-          <Link to="/recover-password">I forgot my password.</Link>
+          <br />
         </div>
-        <input type="submit" />
+        <br />
+        <input type="submit" className="submit" />
       </form>
+      <br />
+      <Button
+        href="/recover-password"
+        variant="outline-info"
+        size="sm"
+        className="forgot"
+      >
+        I forgot my password.
+      </Button>
     </div>
   );
 }

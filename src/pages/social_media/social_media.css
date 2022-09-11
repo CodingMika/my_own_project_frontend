@@ -1,6 +1,9 @@
-.social_media {
+.socialmedia {
   background-color: #add8e6;
+  text-align: center;
 }
-a {
+
+.socialmedia a {
   text-decoration: none;
+  color: black;
 }

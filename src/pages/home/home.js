@@ -1,15 +1,20 @@
-import { Link } from "react-router-dom";
 import "./home.css";
+import giver from "./giver.jpg";
+import { Button, ButtonGroup } from "react-bootstrap";
 
 function HomePage(props) {
   return (
     <div className="homepage">
-      homepage
-      <br />
-      <Link to="/sign-in">I already have an account.</Link>
-      <br />
-      <Link to="/sign-up">I'm a new user.</Link>
-      <br />
+      <ButtonGroup>
+        <Button href="/sign-in" variant="info">
+          I already have an account.
+        </Button>
+        <Button href="/sign-up" variant="info">
+          I'm a new user.
+        </Button>
+      </ButtonGroup>
+
+      <img src={giver} alt="giver" className="homeimage" />
     </div>
   );
 }

@@ -34,7 +34,7 @@ function RegistrationPage(props) {
     if (email.value == "") {
       setEmail({
         value: email.value,
-        error: "Please provide your email.",
+        error: "Please, provide your email.",
       });
     }
     if (password.value.length < 6 || password.value.length > 12) {
@@ -48,7 +48,7 @@ function RegistrationPage(props) {
         setPassword({
           value: password.value,
           error:
-            "Please enter a password that contains numbers, uppercase and lowercase letters and special characters.",
+            "Please, enter a password that contains numbers, uppercase and lowercase letters, special characters.",
         });
       }
     }
@@ -63,30 +63,35 @@ function RegistrationPage(props) {
 
   return (
     <div className="registration">
+      <br />
       Create your account:
       <form onSubmit={handleValidation}>
         <div>
+          <br />
           <lable>Name: </lable>
           <input type="text" onChange={handleNameChange} />
           {name.error}
         </div>
         <div>
+          <br />
           <lable>Email: </lable>
           <input type="email" onChange={handleEmailChange} />
           {email.error}
         </div>
         <div>
+          <br />
           <lable>Password: </lable>
           <input type="password" onChange={handlePasswordChange} />
           {password.error}
         </div>
         <div>
+          <br />
           <lable>Confirm password: </lable>
           <input type="password" onChange={handleConfirmPasswordChange} />
           {confirmPassword.error}
         </div>
-
-        <input type="submit" />
+        <br />
+        <input type="submit" className="submit" />
       </form>
     </div>
   );

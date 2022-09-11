@@ -1,12 +1,20 @@
-import { Link } from "react-router-dom";
+import { Button, ButtonGroup } from "react-bootstrap";
 import "./footer.css";
 
 function Footer(props) {
   return (
     <div className="footer">
-      <Link to="/information">Information</Link>
-      <Link to="/social-media">Social Media</Link>
-      <Link to="/contacts">Contacts</Link>
+      <ButtonGroup aria-label="Footer">
+        <Button href="/information" variant="info">
+          Information
+        </Button>
+        <Button href="/social-media" variant="info">
+          Social Media
+        </Button>
+        <Button href="/contacts" variant="info">
+          Contacts
+        </Button>
+      </ButtonGroup>
     </div>
   );
 }

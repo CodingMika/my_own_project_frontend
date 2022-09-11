@@ -1,3 +1,9 @@
 .registration {
-  background-color: #f0e130;
+  background-color: #e7feff;
+  text-align: center;
+}
+
+.submit {
+  background-color: #afeeee;
+  color: black;
 }
