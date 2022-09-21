@@ -4,14 +4,14 @@ import "./footer.css";
 function Footer(props) {
   return (
     <div className="footer">
-      <ButtonGroup aria-label="Footer">
-        <Button href="/information" variant="info">
+      <ButtonGroup>
+        <Button href="/information" variant="success">
           Information
         </Button>
-        <Button href="/social-media" variant="info">
+        <Button href="/social-media" variant="success">
           Social Media
         </Button>
-        <Button href="/contacts" variant="info">
+        <Button href="/contacts" variant="success">
           Contacts
         </Button>
       </ButtonGroup>

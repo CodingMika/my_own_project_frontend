@@ -1,22 +1,11 @@
+import { useState } from "react";
 import "./home.css";
-import giver from "./giver.jpg";
-import { Button, ButtonGroup } from "react-bootstrap";
 
 function HomePage(props) {
-  return (
-    <div className="homepage">
-      <ButtonGroup>
-        <Button href="/sign-in" variant="info">
-          I already have an account.
-        </Button>
-        <Button href="/sign-up" variant="info">
-          I'm a new user.
-        </Button>
-      </ButtonGroup>
+  const [addList, setAddList] = useState();
+  const [selectedCategory, setSelectedCategory] = useState();
 
-      <img src={giver} alt="giver" className="homeimage" />
-    </div>
-  );
+  return <div className="home-page"></div>;
 }
 
 export default HomePage;

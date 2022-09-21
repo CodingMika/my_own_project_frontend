@@ -1,13 +1,7 @@
 .homepage {
-  background-color: #e7feff;
-  text-decoration: none;
-  text-align: center;
-}
-
-.homeimage {
-  height: 500px;
-  width: 500px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  display: flex;
+  background-color: #b4e197;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
