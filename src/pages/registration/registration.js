@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./registration.css";
+import bcrypt from "bcryptjs";
 
 function RegistrationPage(props) {
   const [name, setName] = useState({ value: "", error: null }); //{value, error}
@@ -110,6 +111,9 @@ function RegistrationPage(props) {
 }
 
 function submitForm(name, email, password) {
+  const salt = bcrypt.genSaltSync(10);
+  password = bcrypt.hashSync(password, salt);
+
   const requestOptions = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
