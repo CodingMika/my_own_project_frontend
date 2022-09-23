@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "./registration.css";
 import bcrypt from "bcryptjs";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 function RegistrationPage(props) {
+  const navigate = useNavigate();
   const [name, setName] = useState({ value: "", error: null }); //{value, error}
   const [email, setEmail] = useState({ value: "", error: null });
   const [password, setPassword] = useState({ value: "", error: null });
@@ -10,6 +13,7 @@ function RegistrationPage(props) {
     value: "",
     error: null,
   });
+  const [otherErrors, setOtherErrors] = useState("");
 
   const handleNameChange = (event) => {
     setName({ value: event.target.value.trim() });
@@ -66,7 +70,13 @@ function RegistrationPage(props) {
       });
     }
     if (isValid) {
-      submitForm(name.value, email.value, password.value);
+      submitForm(
+        name.value,
+        email.value,
+        password.value,
+        () => navigate("/"),
+        setOtherErrors
+      );
     }
   };
 
@@ -74,7 +84,7 @@ function RegistrationPage(props) {
     <div className="registration">
       <br />
       Create your account:
-      <form onSubmit={handleValidation}>
+      <form>
         <div>
           <br />
           <lable>Name: </lable>
@@ -104,13 +114,16 @@ function RegistrationPage(props) {
           {confirmPassword.error}
         </div>
         <br />
-        <input type="submit" className="submit" />
+        <Button className="btn-success" onClick={handleValidation}>
+          Submit
+        </Button>
+        <div>{otherErrors}</div>
       </form>
     </div>
   );
 }
 
-function submitForm(name, email, password) {
+function submitForm(name, email, password, onSuccess, onError) {
   const salt = bcrypt.genSaltSync(10);
   password = bcrypt.hashSync(password, salt);
 
@@ -126,15 +139,13 @@ function submitForm(name, email, password) {
   fetch("/api/registration", requestOptions)
     .then(async (response) => {
       const data = await response.json();
+      console.log(data);
       if (!response.ok) {
-        console.log(response);
-        return Promise.reject(response.status);
+        return Promise.reject(data.error);
       }
-      console.log("Success!");
+      onSuccess();
     })
-    .catch((error) => {
-      console.error("Error!", error);
-    });
+    .catch(onError);
 }
 
 export default RegistrationPage;

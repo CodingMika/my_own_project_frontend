@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { Button } from "react-bootstrap";
 import "./home.css";
 
 function HomePage(props) {
-  const [addList, setAddList] = useState();
-  const [selectedCategory, setSelectedCategory] = useState();
-
-  return <div className="home-page"></div>;
+  return (
+    <div className="home">
+      <Button href="/account">My account</Button>
+    </div>
+  );
 }
 
 export default HomePage;

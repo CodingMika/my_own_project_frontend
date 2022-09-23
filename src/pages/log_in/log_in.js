@@ -21,12 +21,7 @@ function LogInPage(props) {
         <input type="submit" className="submit" />
       </form>
       <br />
-      <Button
-        href="/recover-password"
-        variant="outline-info"
-        size="sm"
-        className="forgot"
-      >
+      <Button href="/recover-password" size="sm" className="btn-warning">
         I forgot my password.
       </Button>
     </div>

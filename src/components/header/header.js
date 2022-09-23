@@ -5,6 +5,9 @@ function Header(props) {
   return (
     <div className="header">
       <ButtonGroup>
+        <Button href="/" variant="success">
+          Home
+        </Button>
         <Button href="/sign-in" variant="success">
           I already have an account.
         </Button>

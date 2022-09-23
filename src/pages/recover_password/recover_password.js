@@ -9,7 +9,7 @@ function RecoverPassword(props) {
           <lable>Email: </lable>
           <input type="email" />
         </div>
-        <input type="submit" />
+        <input type="submit" className="submit" />
       </form>
     </div>
   );

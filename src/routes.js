@@ -3,6 +3,8 @@ import HomePage from "./pages/home/home";
 import SignInPage from "./pages/log_in/log_in";
 import SignUpPage from "./pages/registration/registration";
 import AccountPage from "./pages/account/account";
+import EditAccount from "./pages/edit_account/edit_account";
+import DeleteAccount from "./pages/delete_account/delete_account";
 import Information from "./pages/information/information";
 import SocialMedia from "./pages/social_media/social_media";
 import Contacts from "./pages/contacts/contacts";
@@ -16,6 +18,8 @@ function MakeRoutes(props) {
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/account" element={<AccountPage />} />
+        <Route path="/edit-account" element={<EditAccount />} />
+        <Route path="/delete-account" element={<DeleteAccount />} />
         <Route path="/information" element={<Information />} />
         <Route path="/social-media" element={<SocialMedia />} />
         <Route path="/contacts" element={<Contacts />} />
