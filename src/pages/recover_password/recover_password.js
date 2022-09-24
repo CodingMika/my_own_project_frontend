@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import "./recover_password.css";
 
 function RecoverPassword(props) {
@@ -9,7 +10,7 @@ function RecoverPassword(props) {
           <lable>Email: </lable>
           <input type="email" />
         </div>
-        <input type="submit" className="submit" />
+        <Button className="btn-success">Submit</Button>
       </form>
     </div>
   );

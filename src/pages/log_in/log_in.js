@@ -18,7 +18,7 @@ function LogInPage(props) {
           <br />
         </div>
         <br />
-        <input type="submit" className="submit" />
+        <Button className="btn-success">Submit</Button>
       </form>
       <br />
       <Button href="/recover-password" size="sm" className="btn-warning">
