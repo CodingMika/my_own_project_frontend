@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./registration.css";
-import bcrypt from "bcryptjs";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import CryptoJS from "crypto-js";
 
 function RegistrationPage(props) {
   const navigate = useNavigate();
@@ -29,6 +29,7 @@ function RegistrationPage(props) {
   };
 
   const handleValidation = (event) => {
+    setOtherErrors("");
     let isValid = true;
     event.preventDefault();
     if (name.value.length < 1 || name.value.length > 10) {
@@ -75,7 +76,7 @@ function RegistrationPage(props) {
         email.value,
         password.value,
         () => navigate("/"),
-        setOtherErrors
+        (errors) => setOtherErrors(JSON.stringify(errors))
       );
     }
   };
@@ -124,8 +125,7 @@ function RegistrationPage(props) {
 }
 
 function submitForm(name, email, password, onSuccess, onError) {
-  const salt = bcrypt.genSaltSync(10);
-  password = bcrypt.hashSync(password, salt);
+  password = CryptoJS.SHA256(password).toString();
 
   const requestOptions = {
     method: "POST",
@@ -141,7 +141,7 @@ function submitForm(name, email, password, onSuccess, onError) {
       const data = await response.json();
       console.log(data);
       if (!response.ok) {
-        return Promise.reject(data.error);
+        return Promise.reject(data.error ?? response.status);
       }
       onSuccess();
     })
