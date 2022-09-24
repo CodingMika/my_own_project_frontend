@@ -8,10 +8,10 @@ function Header(props) {
         <Button href="/" variant="success">
           Home
         </Button>
-        <Button href="/sign-in" variant="success">
+        <Button href="/login" variant="success">
           I already have an account.
         </Button>
-        <Button href="/sign-up" variant="success">
+        <Button href="/registation" variant="success">
           I'm a new user.
         </Button>
       </ButtonGroup>
