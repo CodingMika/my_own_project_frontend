@@ -9,6 +9,8 @@ import Information from "./pages/information/information";
 import SocialMedia from "./pages/social_media/social_media";
 import Contacts from "./pages/contacts/contacts";
 import RecoverPassword from "./pages/recover_password/recover_password";
+import AddPage from "./pages/make_add/make_add";
+import MakeAddPage from "./pages/make_add/make_add";
 
 function MakeRoutes(props) {
   return (
@@ -24,6 +26,8 @@ function MakeRoutes(props) {
         <Route path="/social-media" element={<SocialMedia />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/recover-password" element={<RecoverPassword />} />
+        <Route path="/add" element={<AddPage />} />
+        <Route path="/make-add" element={<MakeAddPage />} />
       </Routes>
     </div>
   );

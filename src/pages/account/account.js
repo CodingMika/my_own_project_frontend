@@ -4,6 +4,9 @@ import "./account.css";
 function AccountPage(props) {
   return (
     <div className="account">
+      <div>
+        <lable></lable>
+      </div>
       <Button href="/edit-account" className="btn-success">
         Edit my account.
       </Button>

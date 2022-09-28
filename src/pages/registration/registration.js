@@ -3,6 +3,7 @@ import "./registration.css";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import CryptoJS from "crypto-js";
+import UserService from "../../services/user/user_service";
 
 function RegistrationPage(props) {
   const navigate = useNavigate();
@@ -83,38 +84,44 @@ function RegistrationPage(props) {
 
   return (
     <div className="registration">
-      <br />
-      Create your account:
+      <h4>Create your account:</h4>
       <form>
-        <div>
-          <br />
-          <lable>Name: </lable>
-          <input name="name" type="text" onChange={handleNameChange} />
+        <div className="input-group">
+          <span class="input-group-text">Name:</span>
+          <input
+            type="name"
+            className="form-control"
+            onChange={handleNameChange}
+          />
           {name.error}
         </div>
-        <div>
-          <br />
-          <lable>Email: </lable>
-          <input name="email" type="email" onChange={handleEmailChange} />
+        <div className="input-group">
+          <span class="input-group-text">Email:</span>
+          <input
+            type="email"
+            className="form-control"
+            onChange={handleEmailChange}
+          />
           {email.error}
         </div>
-        <div>
-          <br />
-          <lable>Password: </lable>
+        <div className="input-group">
+          <span class="input-group-text">Password:</span>
           <input
-            name="password"
             type="password"
+            className="form-control"
             onChange={handlePasswordChange}
           />
           {password.error}
         </div>
-        <div>
-          <br />
-          <lable>Confirm password: </lable>
-          <input type="password" onChange={handleConfirmPasswordChange} />
+        <div className="input-group">
+          <span class="input-group-text">Confirm password:</span>
+          <input
+            type="password"
+            className="form-control"
+            onChange={handleConfirmPasswordChange}
+          />
           {confirmPassword.error}
         </div>
-        <br />
         <Button className="btn-success" onClick={handleValidation}>
           Submit
         </Button>
@@ -143,6 +150,7 @@ function submitForm(name, email, password, onSuccess, onError) {
       if (!response.ok) {
         return Promise.reject(data.error ?? response.status);
       }
+      UserService.setUser(data);
       onSuccess();
     })
     .catch(onError);

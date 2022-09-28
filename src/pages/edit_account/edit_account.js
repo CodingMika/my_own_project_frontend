@@ -1,52 +1,42 @@
+import { Button } from "react-bootstrap";
 import "./edit_account.css";
 
 function EditAccount(props) {
   return (
     <div className="account">
-      Edit my account:
-      <form
-        method="postT"
-        action="/upload-avatar"
-        enctype="multipart/form-data"
-      >
-        <div>
-          <br />
-          <label>Profile Picture:</label>
-          <input type="file" name="avatar" />
-        </div>
-        <div>
-          <br />
-          <input type="submit" value="Upload" className="submit" />
+      <h4>Edit my account:</h4>
+      <form>
+        <div class="input-group">
+          <span class="input-group-text">Profile picture:</span>
+          <Button type="file" name="avatar" className="btn-success">
+            Choose your profile picture
+          </Button>
+          <Button className="btn-success">Upload</Button>
         </div>
       </form>
       <form>
-        <div>
-          <br />
-          <lable>Name: </lable>
-          <input type="text" />
+        <div class="input-group">
+          <span class="input-group-text">Name:</span>
+          <input type="text" class="form-control" />
         </div>
-        <div>
-          <br />
-          <lable>City:</lable>
-          <input type="search" />
+        <div class="input-group">
+          <span class="input-group-text">City:</span>
+          <input type="search" class="form-control" />
         </div>
-        <div>
-          <br />
-          <lable>Phone Number: </lable>
-          <input type="tel" />
+        <div class="input-group">
+          <span class="input-group-text">Phone Number:</span>
+          <input type="tel" class="form-control" />
         </div>
-        <div>
-          <br />
-          <lable>Email: </lable>
-          <input type="email" />
+        <div class="input-group">
+          <span class="input-group-text">Email:</span>
+          <input type="email" class="form-control" />
         </div>
-        <div>
-          <br />
-          <lable>Password:</lable>
-          <input type="password" />
+        <div class="input-group">
+          <span class="input-group-text">Password:</span>
+          <input type="password" class="form-control" />
         </div>
-        <br />
-        <input type="submit" className="submit" />
+
+        <Button className="btn-success">Submit</Button>
       </form>
     </div>
   );

@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CryptoJS from "crypto-js";
+import UserService from "../../services/user/user_service";
 
 function LoginPage(props) {
   const navigate = useNavigate();
@@ -47,28 +48,31 @@ function LoginPage(props) {
 
   return (
     <div className="login">
-      Log in:
+      <h4>Log in:</h4>
       <form>
-        <div>
-          <br />
-          <lable>Email: </lable>
-          <input type="email" onChange={handleEmailChange} />
+        <div className="input-group">
+          <span className="input-group-text">Email:</span>
+          <input
+            type="email"
+            className="form-control"
+            onChange={handleEmailChange}
+          />
           {email.error}
         </div>
-        <div>
-          <br />
-          <lable>Password: </lable>
-          <input type="password" onChange={handlePasswordChange} />
+        <div className="input-group">
+          <span className="input-group-text">Password:</span>
+          <input
+            type="password"
+            className="form-control"
+            onChange={handlePasswordChange}
+          />
           {password.error}
-          <br />
         </div>
-        <br />
         <Button className="btn-success" onClick={handleValidation}>
           Submit
         </Button>
         <div>{otherErrors}</div>
       </form>
-      <br />
       <Button href="/recover-password" size="sm" className="btn-warning">
         I forgot my password.
       </Button>
@@ -93,6 +97,7 @@ function submitForm(email, password, onSuccess, onError) {
       if (!response.ok) {
         return Promise.reject(data.error ?? response.status);
       }
+      UserService.setUser(data);
       onSuccess();
     })
     .catch(onError);

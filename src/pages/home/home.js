@@ -5,6 +5,7 @@ function HomePage(props) {
   return (
     <div className="home">
       <Button href="/account">My account</Button>
+      <Button href="/make-add">Make your add</Button>
     </div>
   );
 }

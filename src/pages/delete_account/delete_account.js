@@ -5,7 +5,9 @@ function DeleteAccount(props) {
   return (
     <div className="delete">
       Are you sure you want to delete your account?
-      <Button className="btn-danger">Yes</Button>
+      <Button href="/api/delete-account" className="btn-danger">
+        Yes
+      </Button>
       <Button href="/account" className="btn-success">
         No
       </Button>
