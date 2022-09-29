@@ -1,21 +1,22 @@
-import { useState } from "react";
 import { Button } from "react-bootstrap";
-import UserService from "../../services/user/user_service";
 import "./header.css";
+import { useCookies } from "react-cookie";
 
 function Header(props) {
-  const [user, setUser] = useState(UserService.getUser());
-
-  UserService.setHeaderUpdate((user) => {
-    setUser(user);
-  });
+  const [cookies, setCookies, removeCookie] = useCookies(["user"]);
+  const user = cookies.user;
 
   const elements = [];
-
+  console.log(user);
   if (user != null) {
     elements.push(
       <HeaderEmail key="headerEmail" email={user.email} />,
-      <Button key="button1" href="/logout" variant="success">
+      <Button
+        key="button1"
+        href="/api/logout"
+        variant="success"
+        onClick={() => removeCookie("user")}
+      >
         Log out
       </Button>
     );
@@ -30,12 +31,12 @@ function Header(props) {
     );
   }
   return (
-    <>
+    <div className="header">
       <Button href="/" variant="success">
         Home
       </Button>
       {elements}
-    </>
+    </div>
   );
 }
 

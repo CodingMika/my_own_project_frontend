@@ -3,10 +3,11 @@ import { Button } from "react-bootstrap";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CryptoJS from "crypto-js";
-import UserService from "../../services/user/user_service";
+import { useCookies } from "react-cookie";
 
 function LoginPage(props) {
   const navigate = useNavigate();
+  const [cookies, setCookies] = useCookies(["user"]);
   const [email, setEmail] = useState({ value: "", error: null });
   const [password, setPassword] = useState({ value: "", error: null });
   const [otherErrors, setOtherErrors] = useState("");
@@ -40,7 +41,10 @@ function LoginPage(props) {
       submitForm(
         email.value,
         password.value,
-        () => navigate("/"),
+        (user) => {
+          setCookies("user", user);
+          navigate("/");
+        },
         (errors) => setOtherErrors(JSON.stringify(errors))
       );
     }
@@ -97,8 +101,7 @@ function submitForm(email, password, onSuccess, onError) {
       if (!response.ok) {
         return Promise.reject(data.error ?? response.status);
       }
-      UserService.setUser(data);
-      onSuccess();
+      onSuccess(data);
     })
     .catch(onError);
 }
