@@ -6,11 +6,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <MakeRoutes />
-      <Footer />
-    </div>
+    <>
+      <div className="app">
+        <Header />
+        <MakeRoutes />
+      </div>
+      <div>
+        <Footer />
+      </div>
+    </>
   );
 }
 

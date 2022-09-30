@@ -1,31 +1,52 @@
-import { Button } from "react-bootstrap";
 import "./make_add.css";
+import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 function MakeAddPage(props) {
+  const [image, setImage] = useState();
+  const [title, setTitle] = useState();
+  const [city, setCity] = useState();
+  const [description, setDescription] = useState();
+
+  const handleImageChange = (event) => {
+    setImage();
+  };
+  const handleTitleChange = (event) => {
+    setTitle();
+  };
+  const handleCityChange = (event) => {
+    setCity();
+  };
+  const handleDescriptionChange = (event) => {
+    setDescription();
+  };
+
   return (
     <div className="make-add">
+      <h4>Make your add:</h4>
       <form>
-        <div class="input-group-lg">
-          <span class="input-group-text" id="inputGroupFileAddon01">
-            Upload the picture:
-          </span>
-          <div class="custom-file">
-            <input
-              type="file"
-              class="custom-file-input"
-              id="inputGroupFile01"
-              aria-describedby="inputGroupFileAddon01"
-            />
-          </div>
+        <div className="input-group">
+          <span className="input-group-text">Picture:</span>
+          <Button type="image" name="avatar" className="btn-success">
+            Choose a picture
+          </Button>
+          <Button className="btn-success">Upload</Button>
         </div>
-        <div className="input-group mb-3 input-group-lg">
+        <div className="input-group">
           <span className="input-group-text">Title:</span>
           <input type="text" className="form-control" />
         </div>
-        <div className="input-group mb-3 input-group-lg">
+
+        <div className="input-group">
+          <span className="input-group-text">City:</span>
+          <input type="text" className="form-control" />
+        </div>
+
+        <div className="input-group">
           <span className="input-group-text">Description:</span>
           <input type="text" className="form-control" />
         </div>
+
         <Button className="btn-success">Submit</Button>
       </form>
     </div>

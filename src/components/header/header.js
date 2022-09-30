@@ -11,6 +11,12 @@ function Header(props) {
   if (user != null) {
     elements.push(
       <HeaderEmail key="headerEmail" email={user.email} />,
+      <Button key="button2" href="/profile" variant="success">
+        My profile
+      </Button>,
+      <Button key="button3" href="/make-add" variant="success">
+        Make your add
+      </Button>,
       <Button
         key="button1"
         href="/api/logout"
@@ -22,10 +28,10 @@ function Header(props) {
     );
   } else {
     elements.push(
-      <Button key="button2" href="/login" variant="success">
+      <Button key="button4" href="/login" variant="success">
         I already have an account
       </Button>,
-      <Button key="button3" href="/registation" variant="success">
+      <Button key="button5" href="/registation" variant="success">
         I'm a new user
       </Button>
     );

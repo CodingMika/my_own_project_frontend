@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "./registration.css";
+import { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import CryptoJS from "crypto-js";
@@ -8,7 +8,7 @@ import { useCookies } from "react-cookie";
 function RegistrationPage(props) {
   const navigate = useNavigate();
   const [cookies, setCookies] = useCookies(["user"]);
-  const [name, setName] = useState({ value: "", error: null }); //{value, error}
+  const [name, setName] = useState({ value: "", error: null });
   const [email, setEmail] = useState({ value: "", error: null });
   const [password, setPassword] = useState({ value: "", error: null });
   const [confirmPassword, setConfirmPassword] = useState({
