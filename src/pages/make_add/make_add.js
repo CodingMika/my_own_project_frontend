@@ -27,10 +27,7 @@ function MakeAddPage(props) {
       <form>
         <div className="input-group">
           <span className="input-group-text">Picture:</span>
-          <Button type="image" name="avatar" className="btn-success">
-            Choose a picture
-          </Button>
-          <Button className="btn-success">Upload</Button>
+          <input type="file" id="add-image" />
         </div>
         <div className="input-group">
           <span className="input-group-text">Title:</span>
@@ -47,7 +44,7 @@ function MakeAddPage(props) {
           <input type="text" className="form-control" />
         </div>
 
-        <Button className="btn-success">Submit</Button>
+        <Button variant="success">Submit</Button>
       </form>
     </div>
   );

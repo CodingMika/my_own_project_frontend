@@ -1,5 +1,5 @@
-import { Button } from "react-bootstrap";
 import "./header.css";
+import { Button } from "react-bootstrap";
 import { useCookies } from "react-cookie";
 
 function Header(props) {
@@ -10,15 +10,18 @@ function Header(props) {
   console.log(user);
   if (user != null) {
     elements.push(
-      <HeaderEmail key="headerEmail" email={user.email} />,
-      <Button key="button2" href="/profile" variant="success">
+      <h5 key="headerEmail">You logged in as {user.email}</h5>,
+      <Button key="btn1" href="/profile" variant="success">
         My profile
       </Button>,
-      <Button key="button3" href="/make-add" variant="success">
-        Make your add
+      <Button key="btn2" href="/add" variant="success">
+        My adds
+      </Button>,
+      <Button key="btn3" href="/make-add" variant="success">
+        Make a new add
       </Button>,
       <Button
-        key="button1"
+        key="btn4"
         href="/api/logout"
         variant="success"
         onClick={() => removeCookie("user")}
@@ -28,10 +31,10 @@ function Header(props) {
     );
   } else {
     elements.push(
-      <Button key="button4" href="/login" variant="success">
+      <Button key="btn5" href="/login" variant="success">
         I already have an account
       </Button>,
-      <Button key="button5" href="/registation" variant="success">
+      <Button key="btn6" href="/registation" variant="success">
         I'm a new user
       </Button>
     );
@@ -43,14 +46,6 @@ function Header(props) {
       </Button>
       {elements}
     </div>
-  );
-}
-
-function HeaderEmail(props) {
-  return (
-    <>
-      <h5>You logged in as {props.email}</h5>
-    </>
   );
 }
 

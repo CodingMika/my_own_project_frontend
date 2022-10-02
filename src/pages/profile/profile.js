@@ -1,50 +1,33 @@
 import "./profile.css";
 import { Button } from "react-bootstrap";
+import { useCookies } from "react-cookie";
 
-function ProfilePage(image, name, city, phoneNumber, email) {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      name: name,
-      city: city,
-      phoneNumber: phoneNumber,
-      email: email,
-    }),
-  };
-  fetch("/api/profile", requestOptions).then(async (response) => {
-    const data = await response.json();
-    console.log(data);
-    if (!response.ok) {
-      return Promise.reject(data.error ?? response.status);
-    }
-  });
+function ProfilePage(props) {
+  const [cookies, setCookies, removeCookie] = useCookies(["user"]);
+  const user = cookies.user;
 
+  const elements = [];
+  console.log(user);
+  if (user != null) {
+    elements.push(
+      <h4 key="picture">Picture: {user.picture ?? "not selected"}</h4>,
+      <h4 key="name">Name: {user.name}</h4>,
+      <h4 key="city">City: {user.city ?? "not selected"}</h4>,
+      <h4 key="phoneNumber">Phone number: {user.phoneNumber}</h4>,
+      <h4 key="email">Email: {user.email}</h4>
+    );
+  }
   return (
-    <div className="account">
-      <h4>Your profile:</h4>
-
-      <dl>
-        <dt>My profile picture:</dt>
-        <dd></dd>
-        <dt>My name:</dt>
-        <dd></dd>
-        <dt>My city:</dt>
-        <dd></dd>
-        <dt>My phone number:</dt>
-        <dd></dd>
-        <dt>My email:</dt>
-        <dd></dd>
-      </dl>
-      <Button href="/edit-profile" className="btn-success">
-        Edit my profile.
+    <div>
+      {elements}
+      <Button href="/edit-profile" variant="success">
+        edit
       </Button>
       <br />
-      <Button href="/delete-account" className="btn-danger">
-        Delete my account.
+      <Button href="/delete-account" variant="success">
+        delete
       </Button>
     </div>
   );
 }
-
 export default ProfilePage;
