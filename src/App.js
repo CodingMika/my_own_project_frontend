@@ -12,7 +12,7 @@ function App() {
         <MakeRoutes />
       </div>
       <div>
-        <Footer />
+        <Footer className="footer" />
       </div>
     </>
   );

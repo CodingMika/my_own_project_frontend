@@ -10,20 +10,23 @@ function Header(props) {
   console.log(user);
   if (user != null) {
     elements.push(
-      <h5 key="headerEmail">You logged in as {user.email}</h5>,
-      <Button key="btn1" href="/profile" variant="success">
+      <h5 key="headerEmail" className="logged">
+        You logged in as {user.email}
+      </h5>,
+      <Button key="btn1" href="/profile" variant="success" className="btn">
         My profile
       </Button>,
-      <Button key="btn2" href="/add" variant="success">
+      <Button key="btn2" href="/add" variant="success" className="btn">
         My adds
       </Button>,
-      <Button key="btn3" href="/make-add" variant="success">
+      <Button key="btn3" href="/make-add" variant="success" className="btn">
         Make a new add
       </Button>,
       <Button
         key="btn4"
         href="/api/logout"
         variant="success"
+        className="btn"
         onClick={() => removeCookie("user")}
       >
         Log out

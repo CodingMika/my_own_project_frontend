@@ -4,17 +4,15 @@ import "./footer.css";
 function Footer(props) {
   return (
     <div className="footer">
-      <ButtonGroup>
-        <Button href="/information" variant="success">
-          Information
-        </Button>
-        <Button href="/social-media" variant="success">
-          Social Media
-        </Button>
-        <Button href="/contacts" variant="success">
-          Contacts
-        </Button>
-      </ButtonGroup>
+      <Button href="/information" variant="success" className="btn">
+        Information
+      </Button>
+      <Button href="/social-media" variant="success" className="btn">
+        Social Media
+      </Button>
+      <Button href="/contacts" variant="success" className="btn">
+        Contacts
+      </Button>
     </div>
   );
 }

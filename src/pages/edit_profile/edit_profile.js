@@ -7,7 +7,7 @@ import { useCookies } from "react-cookie";
 function EditProfilePage(props) {
   const navigate = useNavigate();
   const [cookies, setCookies] = useCookies(["user"]);
-  const [picture, setPicture] = useState({ value: "", error: null });
+  const [image, setImage] = useState({ value: "", error: null });
   const [name, setName] = useState({ value: "", error: null });
   const [city, setCity] = useState({ value: "", error: null });
   const [phoneNumber, setPhoneNumber] = useState({ value: "", error: null });
@@ -19,15 +19,17 @@ function EditProfilePage(props) {
   console.log(user);
   if (user != null) {
     elements.push(
-      <h4 key="picture">Picture: {user.picture}</h4>,
+      <h4 key="image">Picture: {user.image}</h4>,
       <h4 key="name">Name: {user.name}</h4>,
       <h4 key="city">City: {user.city}</h4>,
       <h4 key="phoneNumber">Phone number: {user.phoneNumber}</h4>,
       <h4 key="email">Email: {user.email}</h4>
     );
   }
-  const handlePictureChange = (event) => {
-    setPicture({ value: event.target.value.trim() });
+
+  const handleImageChange = (event) => {
+    console.log(event.target.files[0]);
+    setImage({ value: event.target.files[0] });
   };
   const handleNameChange = (event) => {
     setName({ value: event.target.value.trim() });
@@ -43,6 +45,8 @@ function EditProfilePage(props) {
   };
 
   const handleValidation = (event) => {
+    event.preventDefault();
+
     setOtherErrors("");
     let isValid = true;
     event.preventDefault();
@@ -61,31 +65,41 @@ function EditProfilePage(props) {
       });
     }
 
-    if (isValid) {
-      submitForm(
-        picture.value,
-        name.value,
-        city.value,
-        phoneNumber.value,
-        email.value,
-        (user) => {
-          setCookies("user", user);
-          navigate("/profile");
-        },
-        (errors) => setOtherErrors(JSON.stringify(errors))
-      );
-    }
+    // if (true) {
+    //   submitForm(
+    //     image.value,
+    //     name.value,
+    //     city.value,
+    //     phoneNumber.value,
+    //     email.value,
+    //     (user) => {
+    //       setCookies("user", user);
+    //       navigate("/profile");
+    //     },
+    //     (errors) => setOtherErrors(JSON.stringify(errors))
+    //   );
+    // }
+
+    event.currentTarget.submit();
   };
 
   return (
     <div className="profile">
       <h4>Edit my profile:</h4>
-      <form>
+      <form
+        method="POST"
+        action="/api/edit-profile"
+        enctype="multipart/form-data"
+        onSubmit={handleValidation}
+      >
         <div className="input-group">
-          <span className="input-group-text">
-            Profile picture:{user.picture}
-          </span>
-          <input type="file" id="add-image" />
+          <span className="input-group-text">Profile picture:</span>
+          <input
+            type="file"
+            id="add-image"
+            onChange={handleImageChange}
+            name="image"
+          />
         </div>
         <div className="input-group">
           <span className="input-group-text">Name: {user.name}</span>
@@ -93,6 +107,7 @@ function EditProfilePage(props) {
             type="text"
             className="form-control"
             onChange={handleNameChange}
+            name="name"
           />
         </div>
         <div className="input-group">
@@ -101,6 +116,7 @@ function EditProfilePage(props) {
             type="search"
             className="form-control"
             onChange={handleCityChange}
+            name="city"
           />
         </div>
         <div className="input-group">
@@ -111,6 +127,7 @@ function EditProfilePage(props) {
             type="tel"
             className="form-control"
             onChange={handlePhoneNumberChange}
+            name="phoneNumber"
           />
         </div>
         <div className="input-group">
@@ -119,37 +136,32 @@ function EditProfilePage(props) {
             type="email"
             className="form-control"
             onChange={handleEmailChange}
+            name="email"
           />
         </div>
-        <Button variant="success" onClick={handleValidation}>
+        <button variant="success" className="submitbtn">
           Submit
-        </Button>
+        </button>
       </form>
     </div>
   );
 }
 
-function submitForm(
-  picture,
-  name,
-  city,
-  phoneNumber,
-  email,
-  onSuccess,
-  onError
-) {
+function submitForm(image, name, city, phoneNumber, email, onSuccess, onError) {
+  const formData = new FormData();
+  formData.append("file", image);
+  formData.append("body", {
+    name: name,
+    city: city,
+    phoneNumber: phoneNumber,
+    email: email,
+  });
+
   const requestOptions = {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      picture: picture,
-      name: name,
-      city: city,
-      phoneNumber: phoneNumber,
-      email: email,
-    }),
+    body: formData,
   };
-  fetch("/api/edit_profile", requestOptions)
+  fetch("/api/edit-profile", requestOptions)
     .then(async (response) => {
       const data = await response.json();
       console.log(data);

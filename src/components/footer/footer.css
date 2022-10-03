@@ -1,4 +1,7 @@
 .footer {
-  margin-top: 33%;
   text-align: center;
+}
+
+.btn {
+  margin: 5px;
 }

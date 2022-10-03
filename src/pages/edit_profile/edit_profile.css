@@ -1,2 +1,14 @@
-.account {
+.profile {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 50%;
+}
+
+.submitbtn {
+  height: 35px;
+  width: 70px;
+  background-color: #198754;
+  color: white;
+  border-radius: 5px;
+  border: white;
 }

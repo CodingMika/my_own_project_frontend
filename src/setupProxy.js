@@ -8,4 +8,10 @@ module.exports = (app) => {
       changeOrigin: true,
     })
   );
+  app.use(
+    createProxyMiddleware("/uploads", {
+      target: `http://localhost:${SERVER_PORT}`,
+      changeOrigin: true,
+    })
+  );
 };

@@ -1,2 +1,18 @@
 .profile {
 }
+
+.image {
+  margin-top: 5%;
+  margin-left: 5%;
+  width: 150px;
+  height: 150px;
+}
+
+.data {
+  margin-top: 1%;
+  margin-left: 5%;
+}
+.button1 {
+  margin-top: 1%;
+  margin-left: 5%;
+}

@@ -1,0 +1,10 @@
+.logged {
+  display: inline-block;
+  text-align: right;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+.btn {
+  margin: 5px;
+}
