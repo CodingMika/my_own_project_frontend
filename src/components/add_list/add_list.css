@@ -1,0 +1,21 @@
+.btn {
+  text-decoration: none;
+  font-weight: bolder;
+}
+.add-list-container {
+  text-align: center;
+}
+.add-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-list-item {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+.add-list-image {
+  height: 300px;
+  width: 300px;
+}

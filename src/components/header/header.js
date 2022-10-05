@@ -1,10 +1,12 @@
 import "./header.css";
 import { Button } from "react-bootstrap";
 import { useCookies } from "react-cookie";
+import { useNavigate } from "react-router-dom";
 
 function Header(props) {
   const [cookies, setCookies, removeCookie] = useCookies(["user"]);
   const user = cookies.user;
+  const navigate = useNavigate();
 
   const elements = [];
   console.log(user);
@@ -29,10 +31,13 @@ function Header(props) {
       </Button>,
       <Button
         key="btn4"
-        href="/api/logout"
         variant="success"
         className="btn"
-        onClick={() => removeCookie("user")}
+        onClick={async () => {
+          removeCookie("user");
+          await fetch("/api/logout");
+          navigate("/");
+        }}
       >
         Log out
       </Button>

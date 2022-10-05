@@ -1,5 +1,9 @@
-.image {
+.add-image {
   margin-bottom: 5%;
   width: 300px;
   height: 300px;
+}
+
+.owner-name {
+  color: black;
 }

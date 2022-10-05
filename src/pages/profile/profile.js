@@ -24,7 +24,7 @@ function ProfilePage(props) {
   console.log(user);
   if (user != null) {
     elements.push(
-      <img src={user.image ?? "/images/no_avatar.jpg"} className="image" />,
+      <img src={user.image ?? "/images/no_avatar.jpg"} className="avatar" />,
       <h4 key="name" className="data">
         Name: {user.name}
       </h4>,

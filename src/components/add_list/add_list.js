@@ -53,18 +53,31 @@ function AddList({ userId, page, limit, canPagination = false }) {
   }
 
   return (
-    <div>
-      {list.map((add) => {
-        return (
-          <Button variant="link" key={add._id} href={"/add/" + add._id}>
-            <img key="image" src={add.image} className="image" />
-            <h4 key="title">Title: {add.title}</h4>
-            <h4 key="city">City: {add.city}</h4>
-          </Button>
-        );
-      })}
+    <div className="add-list-container">
+      <div className="add-list">
+        {list.map((add) => {
+          return (
+            <Button
+              variant="link"
+              key={add._id}
+              href={"/add/" + add._id}
+              className="add-list-item"
+            >
+              <img key="image" src={add.image} className="add-list-image" />
+              <div className="btn" key="title">
+                Title: {add.title}
+              </div>
+              <div className="btn" key="city">
+                City: {add.city}
+              </div>
+            </Button>
+          );
+        })}
+      </div>
       {pagination.canLoadMore ? (
-        <Button onClick={(e) => load()}>Load more adds</Button>
+        <Button onClick={(e) => load()} variant="success">
+          Load more adds
+        </Button>
       ) : null}
     </div>
   );

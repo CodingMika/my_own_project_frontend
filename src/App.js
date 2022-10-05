@@ -6,15 +6,15 @@ import MakeRoutes from "./routes";
 
 function App() {
   return (
-    <>
+    <div>
       <div className="app">
         <Header />
         <MakeRoutes />
       </div>
       <div>
-        <Footer className="footer" />
+        <Footer />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,9 +1,11 @@
 .app {
-  margin-top: 2%;
-  margin-bottom: 2%;
-  margin-left: 5%;
-  margin-right: 5%;
+  min-height: 85vh;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  margin-right: 50px;
+  font-family: "Verdana";
+  background-color: #feffde;
 }
 .footer {
-  margin: 40%;
 }
