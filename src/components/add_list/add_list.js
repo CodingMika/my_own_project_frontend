@@ -3,15 +3,24 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 
-function AddList({ userId, page, limit }) {
+function AddList({ userId, page, limit, canPagination = false }) {
   const [list, setList] = useState(null);
   const [err, setErr] = useState(null);
 
-  useEffect(() => {
+  const [pagination, setPagination] = useState({
+    page: page ?? 1,
+    canLoadMore: true,
+  });
+
+  function load() {
     fetch("/api/adds", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId: userId, page: page, limit: limit }),
+      body: JSON.stringify({
+        userId: userId,
+        page: pagination.page,
+        limit: limit,
+      }),
     })
       .then(async (response) => {
         const data = await response.json();
@@ -19,10 +28,19 @@ function AddList({ userId, page, limit }) {
         if (!response.ok) {
           return Promise.reject(data.error ?? response.status);
         }
-        setList(data);
+        let newList = list ?? [];
+        if (data.length == 0) {
+          setPagination({ page: pagination.page, canLoadMore: false });
+        } else {
+          newList.push(...data);
+          setPagination({ page: pagination.page + 1, canLoadMore: true });
+        }
+        setList(newList);
       })
       .catch(setErr);
-  }, [userId, page, limit]);
+  }
+
+  useEffect(load, [userId, page, limit]);
 
   if (err != null) {
     return <div>{JSON.stringify(err)}</div>;
@@ -45,6 +63,9 @@ function AddList({ userId, page, limit }) {
           </Button>
         );
       })}
+      {pagination.canLoadMore ? (
+        <Button onClick={(e) => load()}>Load more adds</Button>
+      ) : null}
     </div>
   );
 }
