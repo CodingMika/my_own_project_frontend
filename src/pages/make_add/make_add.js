@@ -43,31 +43,33 @@ function MakeAddPage(props) {
       });
     }
 
-    if (true) {
-      submitForm(
-        image.value,
-        title.value,
-        city.value,
-        description.value,
-        () => {
-          navigate("/add");
-        },
-        (errors) => setOtherErrors(JSON.stringify(errors))
-      );
+    if (image.value == null) {
+      isValid = false;
+      setImage({
+        value: image.value,
+        error: "Please, provide a picture of your item.",
+      });
     }
+
+    event.currentTarget.submit();
   };
 
   return (
     <div className="make-add">
       <h4>Make your add:</h4>
-      <form>
+      <form
+        method="POST"
+        action="/api/make-add"
+        enctype="multipart/form-data"
+        onSubmit={handleValidation}
+      >
         <div className="input-group">
           <span className="input-group-text">Picture:</span>
           <input
             type="file"
             id="add-image"
             onChange={handleImageChange}
-            required
+            name="image"
           />
         </div>
         <div className="input-group">
@@ -76,7 +78,7 @@ function MakeAddPage(props) {
             type="text"
             className="form-control"
             onChange={handleTitleChange}
-            required
+            name="title"
           />
         </div>
 
@@ -86,7 +88,7 @@ function MakeAddPage(props) {
             type="text"
             className="form-control"
             onChange={handleCityChange}
-            required
+            name="city"
           />
         </div>
 
@@ -96,39 +98,16 @@ function MakeAddPage(props) {
             type="text"
             className="form-control"
             onChange={handleDescriptionChange}
-            required
+            name="description"
           />
         </div>
 
-        <Button variant="success">Submit</Button>
+        <button variant="success" className="btn btn-success">
+          Submit
+        </button>
       </form>
     </div>
   );
-}
-
-function submitForm(image, title, city, description, onSuccess, onError) {
-  const formData = new FormData();
-  formData.append("file", image);
-  formData.append("body", {
-    title: title,
-    city: city,
-    description: description,
-  });
-
-  const requestOptions = {
-    method: "POST",
-    body: formData,
-  };
-  fetch("/api/make-add", requestOptions)
-    .then(async (response) => {
-      const data = await response.json();
-      console.log(data);
-      if (!response.ok) {
-        return Promise.reject(data.error ?? response.status);
-      }
-      onSuccess(data);
-    })
-    .catch(onError);
 }
 
 export default MakeAddPage;

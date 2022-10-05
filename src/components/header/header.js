@@ -16,7 +16,12 @@ function Header(props) {
       <Button key="btn1" href="/profile" variant="success" className="btn">
         My profile
       </Button>,
-      <Button key="btn2" href="/add" variant="success" className="btn">
+      <Button
+        key="btn2"
+        href={"/adds/" + user._id}
+        variant="success"
+        className="btn"
+      >
         My adds
       </Button>,
       <Button key="btn3" href="/make-add" variant="success" className="btn">
